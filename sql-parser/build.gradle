@@ -14,6 +14,7 @@ configurations {
 
 dependencies {
     implementation project(':shared')
+    implementation project(':common')
     antlr4 "org.antlr:antlr4:${versions.antlr}"
     compile "org.antlr:antlr4-runtime:${versions.antlr}"
 

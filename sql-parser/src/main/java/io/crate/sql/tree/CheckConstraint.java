@@ -21,8 +21,8 @@
 
 package io.crate.sql.tree;
 
-import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
+import io.crate.common.StringUtils;
 
 import javax.annotation.Nullable;
 import java.util.function.Consumer;
@@ -98,10 +98,10 @@ public class CheckConstraint<T> extends TableElement<T> {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this)
-            .add("name", name)
-            .add("columnName", columnName)
-            .add("expression", expressionStr)
-            .toString();
+        return StringUtils.toString(
+            CheckConstraint.class,
+            "name", name,
+            "columnName", columnName,
+            "expression", expressionStr);
     }
 }

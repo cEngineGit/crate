@@ -23,6 +23,7 @@ package io.crate.common;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.is;
 
 import org.junit.Test;
 
@@ -44,5 +45,15 @@ public final class StringUtilsTest {
     public void test_split_empty_str() throws Exception {
         var parts = StringUtils.splitToList('.', "");
         assertThat(parts, contains(""));
+    }
+
+    @Test
+    public void test_to_string() throws Exception {
+        assertThat(
+            StringUtils.toString(String.class,"name", "CrateDB", "size", 100),
+            is("java.lang.Class{name=CrateDB, size=100}"));
+        assertThat(
+            StringUtils.toString(String.class),
+            is("java.lang.Class{}"));
     }
 }

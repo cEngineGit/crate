@@ -24,10 +24,30 @@ package io.crate.common;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.annotation.Nullable;
 
 public final class StringUtils {
+
+    public static String toString(Class<?> clazz, Object...attributes) {
+        if (attributes.length % 2 != 0) {
+            throw new IllegalArgumentException("expected event number of entries");
+        }
+        StringBuilder sb = new StringBuilder(32);
+        sb.append(clazz.getClass().getName()).append('{');
+        if (attributes.length > 0) {
+            for (int i = 0; i <= attributes.length / 2; i += 2) {
+                sb.append(Objects.requireNonNull(attributes[i]))
+                    .append("=")
+                    .append(attributes[i + 1])
+                    .append(", ");
+            }
+            sb.setLength(sb.length() - 2);
+        }
+        sb.append("}");
+        return sb.toString();
+    }
 
     public static List<String> splitToList(char delim, String value) {
         ArrayList<String> result = new ArrayList<>();
