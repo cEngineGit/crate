@@ -50,10 +50,10 @@ public final class StringUtilsTest {
     @Test
     public void test_to_string() throws Exception {
         assertThat(
-            StringUtils.toString(String.class,"name", "CrateDB", "size", 100),
-            is("java.lang.Class{name=CrateDB, size=100}"));
+            StringUtils.toString(StringUtilsTest.class,"name", "CrateDB", "size", 100),
+            is("io.crate.common.StringUtilsTest{name=CrateDB, size=100}"));
         assertThat(
-            StringUtils.toString(String.class),
-            is("java.lang.Class{}"));
+            StringUtils.toString(StringUtilsTest.class),
+            is("io.crate.common.StringUtilsTest{}"));
     }
 }

@@ -35,7 +35,7 @@ public final class StringUtils {
             throw new IllegalArgumentException("expected event number of entries");
         }
         StringBuilder sb = new StringBuilder(32);
-        sb.append(clazz.getClass().getName()).append('{');
+        sb.append(clazz.getName()).append('{');
         if (attributes.length > 0) {
             for (int i = 0; i <= attributes.length / 2; i += 2) {
                 sb.append(Objects.requireNonNull(attributes[i]))
